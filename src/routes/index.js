@@ -5,7 +5,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 import Movies from '../pages/Movies';
 
-import StackRoutes from './StackRoutes';
+import StackRoutes from './stackRoutes';
 
 const Drawer = createDrawerNavigator();
 
@@ -40,7 +40,21 @@ function Routes() {
         }}
       />
 
-      <Drawer.Screen name="Movies" component={Movies} />
+      <Drawer.Screen
+        name="Movies"
+        component={Movies}
+        options={{
+          title: 'Meu Filmes',
+
+          drawerIcon: ({ focused, size, color }) => (
+            <MaterialCommunityIcons
+              name={focused ? 'archive' : 'archive-outline'}
+              size={size}
+              color={color}
+            />
+          ),
+        }}
+      />
     </Drawer.Navigator>
   );
 };

@@ -1,11 +1,15 @@
+import 'react-native-gesture-handler';
 import React from 'react';
-import { View, Text } from 'react-native';
+
+import { NavigationContainer } from '@react-navigation/native';
+
+import Routes from './src/routes';
 
 function App() {
   return (
-    <View style={{ marginTop: 100 }}>
-      <Text style={{ color: '#ff0000', fontSize: 30 }}>Sujeito Programador</Text>
-    </View>
+    <NavigationContainer>
+      <Routes />
+    </NavigationContainer>
   );
 };
 

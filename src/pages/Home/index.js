@@ -1,7 +1,9 @@
 import React from 'react';
-import { Text } from 'react-native';
+import { Feather } from '@expo/vector-icons';
 
-import { Container } from './styles';
+import {
+  Container, SearchContainer, Input, SearchButton,
+} from './styles';
 
 import Header from '../../components/Header';
 
@@ -10,7 +12,21 @@ function Home() {
     <Container>
       <Header title="React Prime" />
 
-      <Text>TELA HOME</Text>
+      <SearchContainer>
+        <Input
+          placeholder="Ex Vingadores"
+          placeholderTextColor="#dddddd"
+        />
+
+        <SearchButton>
+          <Feather
+            name="search"
+            size={30}
+            color="#ffffff"
+          />
+        </SearchButton>
+      </SearchContainer>
+
     </Container>
   );
 }

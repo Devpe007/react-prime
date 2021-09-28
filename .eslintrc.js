@@ -23,5 +23,7 @@ module.exports = {
     'no-extra-semi': 'off',
     'import/no-unresolved': 'off',
     'react/self-closing-comp': 'off',
+    'import/prefer-default-export': 'off',
+    'react/prop-types': 'off',
   },
 };

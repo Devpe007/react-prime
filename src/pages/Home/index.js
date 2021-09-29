@@ -10,9 +10,11 @@ import {
   Title,
   BannerButton,
   Banner,
+  SliderMovie,
 } from './styles';
 
 import Header from '../../components/Header';
+import SliderItem from '../../components/SliderItem';
 
 function Home() {
   return (
@@ -34,7 +36,7 @@ function Home() {
         </SearchButton>
       </SearchContainer>
 
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <Title>Em cartaz</Title>
 
         <BannerButton activeOpacity={0.9} onPress={() => alert('Test')}>
@@ -44,6 +46,12 @@ function Home() {
           />
         </BannerButton>
 
+        <SliderMovie
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          data={[1, 2, 3, 4]}
+          renderItem={({ item }) => <SliderItem />}
+        />
       </ScrollView>
 
     </Container>

@@ -10,11 +10,11 @@ import {
   Rate,
 } from './styles';
 
-function SliderItem() {
+function SliderItem({ data }) {
   return (
     <Container activeOpacity={0.7}>
       <BannerItem
-        source={{ uri: 'https://images.pexels.com/photos/918281/pexels-photo-918281.jpeg?cs=srgb&dl=pexels-obregonia-d-toretto-918281.jpg&fm=jpg' }}
+        source={{ uri: `https://image.tmdb.org/t/p/original/${data.poster_path}` }}
       />
 
       <Title numberOfLines={1}>Vingadores</Title>

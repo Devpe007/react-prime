@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Feather } from '@expo/vector-icons';
-import { ScrollView } from 'react-native';
+import { ScrollView, ActivityIndicator } from 'react-native';
 
 import {
   Container,
@@ -24,6 +24,8 @@ function Home() {
   const [nowMovies, setNowMovies] = useState([]);
   const [popularMovies, setPopularMovies] = useState([]);
   const [topMovies, setTopMovies] = useState([]);
+
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const isActive = true;
@@ -59,9 +61,19 @@ function Home() {
       setNowMovies(nowList);
       setPopularMovies(popularList);
       setTopMovies(topList);
+
+      setLoading(false);
     };
     getMovies();
   }, []);
+
+  if (loading) {
+    return (
+      <Container>
+        <ActivityIndicator size="large" color="#ffffff" />
+      </Container>
+    );
+  };
 
   return (
     <Container>

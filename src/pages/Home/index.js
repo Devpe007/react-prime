@@ -28,7 +28,8 @@ function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const isActive = true;
+    let isActive = true;
+    const ac = new AbortController();
 
     async function getMovies() {
       const [nowData, popularData, topData] = await Promise.all([
@@ -54,17 +55,24 @@ function Home() {
           },
         }),
       ]);
-      const nowList = getListMovies(10, nowData.data.results);
-      const popularList = getListMovies(5, popularData.data.results);
-      const topList = getListMovies(5, topData.data.results);
+      if (isActive) {
+        const nowList = getListMovies(10, nowData.data.results);
+        const popularList = getListMovies(5, popularData.data.results);
+        const topList = getListMovies(5, topData.data.results);
 
-      setNowMovies(nowList);
-      setPopularMovies(popularList);
-      setTopMovies(topList);
+        setNowMovies(nowList);
+        setPopularMovies(popularList);
+        setTopMovies(topList);
 
-      setLoading(false);
+        setLoading(false);
+      };
     };
     getMovies();
+
+    return () => {
+      isActive = false;
+      ac.abort();
+    };
   }, []);
 
   if (loading) {

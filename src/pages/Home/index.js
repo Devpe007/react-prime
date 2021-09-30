@@ -18,7 +18,7 @@ import SliderItem from '../../components/SliderItem';
 
 import api, { key } from '../../services/api';
 
-import { getListMovies } from '../../utils/movie';
+import { getListMovies, randomBanner } from '../../utils/movie';
 
 function Home() {
   const [nowMovies, setNowMovies] = useState([]);
@@ -26,6 +26,8 @@ function Home() {
   const [topMovies, setTopMovies] = useState([]);
 
   const [loading, setLoading] = useState(true);
+
+  const [bannerMovie, setBannerMovie] = useState({});
 
   useEffect(() => {
     let isActive = true;
@@ -59,6 +61,8 @@ function Home() {
         const nowList = getListMovies(10, nowData.data.results);
         const popularList = getListMovies(5, popularData.data.results);
         const topList = getListMovies(5, topData.data.results);
+
+        setBannerMovie(nowData.data.results[randomBanner(nowData.data.results)]);
 
         setNowMovies(nowList);
         setPopularMovies(popularList);
@@ -108,7 +112,7 @@ function Home() {
         <BannerButton activeOpacity={0.9} onPress={() => alert('Test')}>
           <Banner
             resizeMethod="resize"
-            source={{ uri: 'https://images.pexels.com/photos/918281/pexels-photo-918281.jpeg?cs=srgb&dl=pexels-obregonia-d-toretto-918281.jpg&fm=jpg' }}
+            source={{ uri: `https://image.tmdb.org/t/p/original/${bannerMovie.poster_path}` }}
           />
         </BannerButton>
 

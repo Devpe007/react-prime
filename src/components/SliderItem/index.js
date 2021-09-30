@@ -17,7 +17,7 @@ function SliderItem({ data }) {
         source={{ uri: `https://image.tmdb.org/t/p/original/${data.poster_path}` }}
       />
 
-      <Title numberOfLines={1}>Vingadores</Title>
+      <Title numberOfLines={1}>{data.title}</Title>
 
       <RateContainer>
         <Ionicons name="md-star" size={12} color="#e7a74e" />

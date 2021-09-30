@@ -21,7 +21,7 @@ function SliderItem({ data }) {
 
       <RateContainer>
         <Ionicons name="md-star" size={12} color="#e7a74e" />
-        <Rate>9/10</Rate>
+        <Rate>{data.vote_average}</Rate>
       </RateContainer>
     </Container>
   );

@@ -26,7 +26,8 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'react/prop-types': 'off',
     'react/jsx-boolean-value': 'off',
-    'no-unused-vars': ['error', { argsIgnorePattern: 'item' }],
     'no-alert': 'off',
+    'prefer-const': 'off',
+    'no-plusplus': 'off',
   },
 };

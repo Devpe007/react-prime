@@ -28,5 +28,6 @@ module.exports = {
     'react/jsx-boolean-value': 'off',
     'prefer-const': 'off',
     'no-plusplus': 'off',
+    'no-console': 'off',
   },
 };

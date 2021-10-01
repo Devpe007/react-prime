@@ -7,6 +7,8 @@ import {
   Header,
   HeaderButton,
   Banner,
+  ButtonLink,
+  Title,
 } from './styles';
 
 import api, { key } from '../../services/api';
@@ -68,6 +70,16 @@ function Detail() {
         resizeMethod="resize"
         source={{ uri: `https://image.tmdb.org/t/p/original/${movie.poster_path}` }}
       />
+
+      <ButtonLink>
+        <Feather
+          name="link"
+          size={24}
+          color="#ffffff"
+        />
+      </ButtonLink>
+
+      <Title numberOfLine={2}>{movie.title}</Title>
     </Container>
   );
 };

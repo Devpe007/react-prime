@@ -31,3 +31,24 @@ export const Banner = styled.Image`
     border-bottom-left-radius: 70px;
     border-bottom-right-radius: 70px;
 `;
+
+export const ButtonLink = styled.TouchableOpacity`
+    background-color: #e72f49;
+    width: 63px;
+    height: 63px;
+    border-radius: 35px;
+    position: absolute;
+    top: 300px;
+    right: 15px;
+    justify-content: center;
+    align-items: center;
+    z-index: 99;
+`;
+
+export const Title = styled.Text`
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: bold;
+    padding: 8px 14px;
+    margin-top: 8px;
+`;

@@ -4,6 +4,8 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import { Feather, Ionicons } from '@expo/vector-icons';
 import Stars from 'react-native-stars';
 
+import Genres from '../../components/Genres';
+
 import {
   Container,
   Header,
@@ -13,6 +15,7 @@ import {
   Title,
   ContentArea,
   Rate,
+  ListGenres,
 } from './styles';
 
 import api, { key } from '../../services/api';
@@ -116,6 +119,14 @@ function Detail() {
         />
         <Rate>{movie.vote_average}</Rate>
       </ContentArea>
+
+      <ListGenres
+        data={movie?.genres}
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={(item) => String(item.id)}
+        renderItem={({ item }) => <Genres data={item} />}
+      />
     </Container>
   );
 };

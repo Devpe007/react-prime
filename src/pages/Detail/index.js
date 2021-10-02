@@ -67,11 +67,9 @@ function Detail() {
     if (savedMovie) {
       await deleteMovie(movie.id);
       setSavedMovie(false);
-      alert('Filme removido de favoritos');
     } else {
       await saveMovie('@primeReact', movieSaved);
       setSavedMovie(true);
-      alert('Filme salvo com sucesso');
     };
   };
 

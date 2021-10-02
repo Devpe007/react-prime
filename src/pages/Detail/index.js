@@ -23,12 +23,15 @@ import {
 
 import api, { key } from '../../services/api';
 
+import { saveMovie, filerMovie, deleteMovie } from '../../utils/storage';
+
 function Detail() {
   const navigation = useNavigation();
   const route = useRoute();
 
   const [movie, setMovie] = useState({});
   const [openLink, setOpenLink] = useState(false);
+  const [savedMovie, setSavedMovie] = useState(false);
 
   useEffect(() => {
     let isActive = true;
@@ -45,6 +48,9 @@ function Detail() {
 
       if (isActive) {
         setMovie(response.data);
+
+        const isFavorite = await filerMovie(response.data);
+        setSavedMovie(isFavorite);
       };
     };
 
@@ -57,6 +63,18 @@ function Detail() {
     };
   }, []);
 
+  async function favoriteMovie(movieSaved) {
+    if (savedMovie) {
+      await deleteMovie(movie.id);
+      setSavedMovie(false);
+      alert('Filme removido de favoritos');
+    } else {
+      await saveMovie('@primeReact', movieSaved);
+      setSavedMovie(true);
+      alert('Filme salvo com sucesso');
+    };
+  };
+
   return (
     <Container>
       <Header>
@@ -68,12 +86,20 @@ function Detail() {
           />
         </HeaderButton>
 
-        <HeaderButton>
-          <Ionicons
-            name="bookmark"
-            size={28}
-            color="#ffffff"
-          />
+        <HeaderButton onPress={() => favoriteMovie(movie)}>
+          {savedMovie ? (
+            <Ionicons
+              name="bookmark"
+              size={28}
+              color="#ffffff"
+            />
+          ) : (
+            <Ionicons
+              name="bookmark-outline"
+              size={28}
+              color="#ffffff"
+            />
+          )}
         </HeaderButton>
       </Header>
 

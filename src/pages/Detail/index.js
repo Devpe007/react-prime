@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, Modal } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 
 import { Feather, Ionicons } from '@expo/vector-icons';
 import Stars from 'react-native-stars';
 
 import Genres from '../../components/Genres';
+import ModalLink from '../../components/ModalLink';
 
 import {
   Container,
@@ -27,6 +28,7 @@ function Detail() {
   const route = useRoute();
 
   const [movie, setMovie] = useState({});
+  const [openLink, setOpenLink] = useState(false);
 
   useEffect(() => {
     let isActive = true;
@@ -80,7 +82,7 @@ function Detail() {
         source={{ uri: `https://image.tmdb.org/t/p/original/${movie.poster_path}` }}
       />
 
-      <ButtonLink>
+      <ButtonLink onPress={() => setOpenLink(true)}>
         <Feather
           name="link"
           size={24}
@@ -134,6 +136,14 @@ function Detail() {
         <Title>Descrição</Title>
         <Description>{movie?.overview}</Description>
       </ScrollView>
+
+      <Modal animationType="slide" transparent={true} visible={openLink}>
+        <ModalLink
+          link={movie?.homepage}
+          title={movie.title}
+          closeModal={() => setOpenLink(false)}
+        />
+      </Modal>
     </Container>
   );
 };

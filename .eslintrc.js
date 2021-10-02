@@ -29,5 +29,9 @@ module.exports = {
     'prefer-const': 'off',
     'no-plusplus': 'off',
     'no-console': 'off',
+    'react/jsx-no-bind': 'off',
+    'global-require': 'off',
+    'no-undef': 'off',
+    'no-alert': 'off',
   },
 };

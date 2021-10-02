@@ -121,7 +121,11 @@ function Detail() {
           )}
           disable={true}
         />
-        <Rate>{movie.vote_average}</Rate>
+        <Rate>
+          {movie.vote_average}
+          {' '}
+          /10
+        </Rate>
       </ContentArea>
 
       <ListGenres

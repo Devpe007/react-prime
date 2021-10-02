@@ -38,3 +38,16 @@ export async function deleteMovie(id) {
 
   return myMovies;
 };
+
+// Filtrar algum filme se já está salvo;
+export async function filerMovie(movie) {
+  let moviesStored = await getMoviesSave('@primeReact');
+
+  const movieFilter = moviesStored.find((item) => item.id === movie.id);
+
+  if (movieFilter) {
+    return true;
+  };
+
+  return false;
+};

@@ -26,3 +26,15 @@ export async function saveMovie(key, newMovie) {
   await AsyncStorage.setItem(key, JSON.stringify(moviesStored));
   console.log('Filme salvo com sucesso');
 };
+
+// Deletar algum filme especifico;
+export async function deleteMovie(id) {
+  let moviesStored = await getMoviesSave('@primeReact');
+
+  let myMovies = moviesStored.filter((item) => (item.id !== id));
+
+  await AsyncStorage.setItem('@primeReact', JSON.stringify(myMovies));
+  console.log('Filme deletado com sucesso');
+
+  return myMovies;
+};
